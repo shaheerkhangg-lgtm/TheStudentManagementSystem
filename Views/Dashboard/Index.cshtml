@@ -1,0 +1,59 @@
+﻿@model List<TheStudentManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_DashboardLayout";
+}
+
+<!-- Top cards -->
+<section class="cards">
+    <div class="card">
+        <span>Total Students</span>
+        <strong>1000</strong>
+    </div>
+    <div class="card">
+        <span>Total Teachers</span>
+        <strong>50</strong>
+    </div>
+    <div class="card">
+        <span>Total Classes</span>
+        <strong>30</strong>
+    </div>
+    <div class="card">
+        <span>Today's Attendance</span>
+        <strong>85%</strong>
+    </div>
+</section>
+
+<!-- Quick buttons -->
+<section class="actions">
+    <section class="actions">
+        <a asp-controller="Students" asp-action="Create">Add Student</a>
+        <a asp-controller="Attendance" asp-action="Create">Mark Attendance</a>
+        <a asp-controller="Results" asp-action="Create">Add Result</a>
+    </section>
+</section>
+
+<!-- Recent students table -->
+<section class="panel">
+    <h3>Recent Students</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>@student.ClassName</td>
+                    <td>@student.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,68 @@
+﻿@model List<TheStudentManagementSystem.Models.ExamResult>
+
+@{
+    ViewData["Title"] = "Results";
+    Layout = "_DashboardLayout";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="success">@TempData["Success"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-box">@TempData["Error"]</div>
+}
+
+<div class="page-actions">
+    <a asp-controller="Results" asp-action="Create" class="btn-primary">+ Add Result</a>
+</div>
+
+<section class="panel">
+    <h3>All Results (@Model.Count)</h3>
+
+    @if (Model.Count == 0)
+    {
+        <p class="empty">No results yet. Click "Add Result" to add the first one.</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Class</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Percentage</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Action</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Student.Name</td>
+                        <td>@item.Student.ClassName</td>
+                        <td>@item.Subject</td>
+                        <td>@item.MarksObtained / @item.TotalMarks</td>
+                        <td>@(item.MarksObtained * 100 / item.TotalMarks)%</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <form asp-controller="Results" asp-action="Delete" asp-route-id="@item.Id" method="post"
+                                      onsubmit="return confirm('Delete this result? This cannot be undone.');">
+                                    <button type="submit" class="btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</section>

@@ -1,0 +1,67 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+    // Gives the menu link the word "active" when you are on that page
+    string Active(string c, string a = null)
+    {
+        return (controller == c && (a == null || action == a)) ? "active" : "";
+    }
+
+    var userName = User.Identity?.Name ?? "User";
+    var initial = userName.Substring(0, 1).ToUpper();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Student Management System</title>
+    <link rel="stylesheet" href="~/css/Dashboard.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- Left menu -->
+        <aside class="sidebar">
+            <h2>Student System</h2>
+            <nav>
+                <a class="@Active("Dashboard")" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                <a class="@Active("Students")" asp-controller="Students" asp-action="Index">Students</a>
+                <a class="@Active("Teachers")" asp-controller="Teachers" asp-action="Index">Teachers</a>
+                <a class="@Active("Attendance")" asp-controller="Attendance" asp-action="Index">Attendance</a>
+                <a class="@Active("Results")" asp-controller="Results" asp-action="Index">Results</a>
+                <a class="@Active("Fees")" asp-controller="Fees" asp-action="Index">Fees</a>
+            </nav>
+        </aside>
+
+        <div class="main">
+
+            <!-- Top bar: page title on the left, user icon and Logout on the right -->
+            <header class="topbar">
+                <h1>@ViewData["Title"]</h1>
+
+                <div class="user-area">
+                    <div class="user-chip">
+                        <span class="avatar">@initial</span>
+                        <span class="user-name">@userName</span>
+                    </div>
+
+                    <form asp-controller="Auth" asp-action="Logout" method="post">
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </div>
+            </header>
+
+            <!-- Each page shows here -->
+            <main class="content">
+                @RenderBody()
+            </main>
+
+        </div>
+    </div>
+
+</body>
+</html>

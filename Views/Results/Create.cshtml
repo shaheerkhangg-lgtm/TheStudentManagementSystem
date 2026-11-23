@@ -1,0 +1,49 @@
+﻿@model TheStudentManagementSystem.Models.ExamResult
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Add Result";
+    Layout = "_DashboardLayout";
+    var students = (List<SelectListItem>)ViewBag.Students;
+}
+
+<section class="panel form-panel">
+    <h3>New Result</h3>
+
+    @if (students.Count == 0)
+    {
+        <p class="empty">Add a student first, then come back.</p>
+        <a asp-controller="Students" asp-action="Create" class="btn-primary">+ Add Student</a>
+    }
+    else
+    {
+        <form asp-controller="Results" asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="form-error"></div>
+
+            <label asp-for="StudentId">Student</label>
+            <select asp-for="StudentId" asp-items="students">
+                <option value="0">-- Select student --</option>
+            </select>
+            <span asp-validation-for="StudentId" class="validation-error"></span>
+
+            <label asp-for="Subject">Subject</label>
+            <input asp-for="Subject" maxlength="50" />
+            <span asp-validation-for="Subject" class="validation-error"></span>
+
+            <label asp-for="MarksObtained">Marks Obtained</label>
+            <input asp-for="MarksObtained" type="number" />
+            <span asp-validation-for="MarksObtained" class="validation-error"></span>
+
+            <label asp-for="TotalMarks">Total Marks</label>
+            <input asp-for="TotalMarks" type="number" />
+            <span asp-validation-for="TotalMarks" class="validation-error"></span>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-primary">Save Result</button>
+                <a asp-controller="Results" asp-action="Index" class="btn-secondary">Cancel</a>
+            </div>
+
+        </form>
+    }
+</section>

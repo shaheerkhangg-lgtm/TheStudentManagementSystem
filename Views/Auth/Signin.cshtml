@@ -1,0 +1,55 @@
+﻿@model TheStudentManagementSystem.Models.SignUpViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Student Management System</title>
+
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+
+            <h1>Create Account</h1>
+            <p>Sign up to get started</p>
+
+            <form method="post" asp-controller="Auth" asp-action="Signin">
+
+                <label asp-for="FullName">Full Name</label>
+                <input asp-for="FullName" maxlength="50" />
+                <span asp-validation-for="FullName" class="validation-error"></span>
+
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" maxlength="50" />
+                <span asp-validation-for="Email" class="validation-error"></span>
+
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" maxlength="20" />
+                <span asp-validation-for="Password" class="validation-error"></span>
+
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" maxlength="20" />
+                <span asp-validation-for="ConfirmPassword" class="validation-error"></span>
+
+                <button type="submit">Sign Up</button>
+
+            </form>
+
+            <p>
+                Already have an account?
+                <a asp-controller="Auth" asp-action="Login">Login</a>
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>

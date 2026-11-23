@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+    var userName = User.Identity?.Name ?? "friend";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Student Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Lilita+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Welcome.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- School icons around the page -->
+    <span class="deco sun">☀️</span>
+    <span class="deco heart">💗</span>
+    <span class="deco bag">🎒</span>
+    <span class="deco pencil">✏️</span>
+    <span class="deco crayon">🖍️</span>
+    <span class="deco laptop">💻</span>
+    <span class="deco books">📚</span>
+    <span class="deco apple">🍎</span>
+
+    <main class="welcome">
+        <h1 class="big">WELCOME</h1>
+        <h2 class="sub">TO OUR STUDENT<br />MANAGEMENT SYSTEM</h2>
+
+        <p class="name">Hello, @userName</p>
+        <p class="small">Manage students, teachers, attendance, results and fees in one place.</p>
+
+        <a class="go-btn" asp-controller="Dashboard" asp-action="Index">Go to Dashboard</a>
+        <p class="count-text">Opening your dashboard in <span id="count">6</span> seconds...</p>
+    </main>
+
+    <script>
+            var seconds = 6;
+            var label = document.getElementById("count");
+
+            var timer = setInterval(function () {
+                seconds--;
+                label.textContent = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    window.location.href = "@Url.Action("Index", "Dashboard")";
+                }
+            }, 1000);
+    </script>
+
+</body>
+</html>

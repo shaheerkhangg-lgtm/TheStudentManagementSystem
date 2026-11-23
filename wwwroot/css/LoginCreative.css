@@ -1,0 +1,266 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #fff6e8;
+    font-family: 'Fredoka', 'Trebuchet MS', Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* The login card */
+.card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 36px 32px;
+    background: #fffdf8;
+    border-radius: 28px;
+    box-shadow: 0 14px 40px rgba(95, 127, 107, 0.25);
+    text-align: center;
+}
+
+.hello {
+    font-family: 'Lilita One', 'Arial Black', sans-serif;
+    font-size: clamp(34px, 8vw, 46px);
+    letter-spacing: 1px;
+    color: #111111;
+    text-shadow: 3px 3px 0 #ffd9a0;
+}
+
+.lead {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #6b6b6b;
+}
+
+    .lead span {
+        display: block;
+        margin-top: 2px;
+        font-family: 'Lilita One', 'Arial Black', sans-serif;
+        font-size: 26px;
+        letter-spacing: 1px;
+        color: #5f7f6b;
+    }
+
+.tagline {
+    min-height: 22px;
+    margin: 14px 0 26px;
+    font-size: 15px;
+    font-style: italic;
+    color: #8a8a8a;
+    transition: opacity 0.4s;
+}
+
+    .tagline.hide {
+        opacity: 0;
+    }
+
+/* Form */
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #333333;
+}
+
+input {
+    width: 100%;
+    padding: 13px 16px;
+    margin-bottom: 18px;
+    border: 2px solid #eadcc2;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #222222;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+    input:focus {
+        border-color: #5f7f6b;
+    }
+
+/* Password box with the Show button */
+.pass-wrap {
+    position: relative;
+}
+
+    .pass-wrap input {
+        padding-right: 76px;
+    }
+
+.toggle {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #e9efe9;
+    color: #46604f;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+    .toggle:hover {
+        background: #d8e4da;
+    }
+
+/* Red messages */
+.validation-error {
+    display: block;
+    margin-top: -12px;
+    margin-bottom: 14px;
+    color: #d94a4a;
+    font-size: 13px;
+}
+
+/* Button */
+.login-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 15px;
+    border: none;
+    border-radius: 40px;
+    background: #5f7f6b;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #46604f;
+    transition: transform 0.15s;
+}
+
+    .login-btn:hover {
+        transform: translateY(-2px);
+    }
+
+.switch {
+    margin-top: 24px;
+    text-align: center;
+    color: #6b6b6b;
+    font-size: 15px;
+}
+
+    .switch a {
+        color: #5f7f6b;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .switch a:hover {
+            text-decoration: underline;
+        }
+
+/* Soft floating shapes */
+.shape {
+    position: absolute;
+    z-index: 1;
+    animation: float 5s ease-in-out infinite;
+}
+
+.s1 {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #ffe27a;
+    top: -30px;
+    left: -30px;
+}
+
+.s2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 30%;
+    background: #f6b5b5;
+    top: 9%;
+    right: 14%;
+    animation-delay: 0.8s;
+}
+
+.s3 {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: #cfe0c8;
+    top: -50px;
+    right: -50px;
+    animation-delay: 1.4s;
+}
+
+.s4 {
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+    background: #b9d3e8;
+    bottom: 12%;
+    left: 6%;
+    animation-delay: 2s;
+}
+
+.s5 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #f9c9a0;
+    bottom: -40px;
+    right: 8%;
+    animation-delay: 0.4s;
+}
+
+.s6 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #d9c7ee;
+    bottom: 14%;
+    left: 44%;
+    animation-delay: 1.8s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .card {
+        padding: 30px 22px 26px;
+    }
+
+    .s2, .s4, .s6 {
+        display: none;
+    }
+}
+
+/* People who prefer no movement */
+@media (prefers-reduced-motion: reduce) {
+    .shape {
+        animation: none;
+    }
+}

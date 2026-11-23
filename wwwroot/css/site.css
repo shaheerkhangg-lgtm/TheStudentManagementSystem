@@ -1,0 +1,122 @@
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #080b16;
+    padding: 20px;
+}
+
+/* LOGIN CARD */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 35px;
+    background: #111827;
+    border: 1px solid #303a52;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+    text-align: center;
+    color: white;
+}
+
+    /* HEADING */
+    .login-container h1 {
+        font-size: 30px;
+        color: #a78bfa;
+        margin-bottom: 10px;
+    }
+
+    .login-container p {
+        color: #9ca3af;
+        margin-bottom: 28px;
+    }
+
+    /* INPUT FIELDS */
+    .login-container input[type="email"],
+    .login-container input[type="password"],
+    .login-container input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        background: #080b16;
+        border: 1px solid #374151;
+        border-radius: 10px;
+        color: white;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .login-container input:focus {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+    }
+
+    .login-container input::placeholder {
+        color: #9ca3af;
+    }
+
+    /* BUTTON */
+    .login-container button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #7928ca, #2563eb);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .login-container button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+        }
+
+    /* LINKS */
+    .login-container a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+
+        .login-container a:hover {
+            color: #38bdf8;
+        }
+
+/* SIGN UP TEXT */
+.signup {
+    margin-top: 25px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+/* VALIDATION ERRORS */
+.text-danger,
+.field-validation-error {
+    color: #ff6b81;
+    font-size: 13px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+
+        .login-container h1 {
+            font-size: 25px;
+        }
+}

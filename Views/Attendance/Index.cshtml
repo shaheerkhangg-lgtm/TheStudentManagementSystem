@@ -1,0 +1,68 @@
+﻿@model List<TheStudentManagementSystem.Models.AttendanceRecord>
+
+@{
+    ViewData["Title"] = "Attendance";
+    Layout = "_DashboardLayout";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="success">@TempData["Success"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-box">@TempData["Error"]</div>
+}
+
+<div class="page-actions">
+    <a asp-controller="Attendance" asp-action="Create" class="btn-primary">+ Mark Attendance</a>
+</div>
+
+<section class="panel">
+    <h3>Attendance Records (@Model.Count)</h3>
+
+    @if (Model.Count == 0)
+    {
+        <p class="empty">No attendance saved yet. Click "Mark Attendance" to add the first one.</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Student</th>
+                    <th>Class</th>
+                    <th>Status</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Action</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Date.ToString("dd MMM yyyy")</td>
+                        <td>@item.Student.Name</td>
+                        <td>@item.Student.ClassName</td>
+                        <td>
+                            <span class="badge @(item.Status == "Present" ? "good" : item.Status == "Late" ? "warn" : "bad")">@item.Status</span>
+                        </td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <form asp-controller="Attendance" asp-action="Delete" asp-route-id="@item.Id" method="post"
+                                      onsubmit="return confirm('Delete this attendance record? This cannot be undone.');">
+                                    <button type="submit" class="btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</section>

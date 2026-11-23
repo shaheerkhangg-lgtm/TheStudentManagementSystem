@@ -1,0 +1,116 @@
+﻿
+/* Login Page Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111f;
+    color: white;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #11111f, #242044);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: #1c1c30;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+    .login-box h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .login-box p {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 30px;
+    }
+
+    .login-box label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ddd;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 13px;
+        margin-bottom: 20px;
+        border: 1px solid #393953;
+        border-radius: 8px;
+        background: #282840;
+        color: white;
+        outline: none;
+    }
+
+        .login-box input:focus {
+            border-color: #8b5cf6;
+        }
+
+    .login-box button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #7c3aed, #4f46e5);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .login-box button:hover {
+            opacity: 0.9;
+        }
+
+    .login-box a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+.validation-error {
+    display: block;
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+.hint {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: -12px;
+    margin-bottom: 15px;
+}
+
+.check-ok {
+    display: block;
+    color: #4ade80;
+    font-size: 13px;
+    margin-top: -12px;
+    margin-bottom: 15px;
+}
+
+.check-bad {
+    display: block;
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: -12px;
+    margin-bottom: 15px;
+}

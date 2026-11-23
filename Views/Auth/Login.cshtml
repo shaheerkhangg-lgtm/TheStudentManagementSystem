@@ -1,0 +1,101 @@
+﻿@model TheStudentManagementSystem.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Student Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Lilita+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/LoginCreative.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Soft shapes around the page -->
+    <span class="shape s1"></span>
+    <span class="shape s2"></span>
+    <span class="shape s3"></span>
+    <span class="shape s4"></span>
+    <span class="shape s5"></span>
+    <span class="shape s6"></span>
+
+    <main class="card">
+
+        <h1 id="greeting" class="hello">Welcome back!</h1>
+        <h2 class="lead">Haven't logged in yet? <span>Time to log in!</span></h2>
+        <p id="tagline" class="tagline">Your students are waiting.</p>
+
+        <form method="post" asp-controller="Auth" asp-action="Login">
+
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" maxlength="50" placeholder="Enter your email" autocomplete="email" />
+            <span asp-validation-for="Email" class="validation-error"></span>
+
+            <label asp-for="Password">Password</label>
+            <div class="pass-wrap">
+                <input asp-for="Password" type="password" maxlength="20" placeholder="Enter your password" autocomplete="current-password" />
+                <button type="button" id="togglePass" class="toggle">Show</button>
+            </div>
+            <span asp-validation-for="Password" class="validation-error"></span>
+
+            <button type="submit" class="login-btn">Let's go</button>
+
+        </form>
+
+        <p class="switch">New here? <a asp-controller="Auth" asp-action="Signin">Create an account</a></p>
+
+    </main>
+
+    <script>
+            // Greeting by time of day
+            var hour = new Date().getHours();
+            var greeting = "Good evening!";
+
+            if (hour < 12) {
+                greeting = "Good morning!";
+            } else if (hour < 18) {
+                greeting = "Good afternoon!";
+            }
+
+            document.getElementById("greeting").textContent = greeting;
+
+            // Friendly lines that change, with a fade
+            var lines = [
+                "Your students are waiting.",
+                "Let's make today count.",
+                "Attendance won't mark itself.",
+                "Great schools run on great records.",
+                "One login away from a productive day."
+            ];
+
+            var tagline = document.getElementById("tagline");
+            var index = 0;
+
+            setInterval(function () {
+                tagline.classList.add("hide");
+
+                setTimeout(function () {
+                    index = (index + 1) % lines.length;
+                    tagline.textContent = lines[index];
+                    tagline.classList.remove("hide");
+                }, 400);
+            }, 3500);
+
+            // Show / hide the password
+            var passwordBox = document.getElementById("Password");
+            var toggle = document.getElementById("togglePass");
+
+            toggle.addEventListener("click", function () {
+                var showing = passwordBox.type === "text";
+                passwordBox.type = showing ? "password" : "text";
+                toggle.textContent = showing ? "Show" : "Hide";
+            });
+    </script>
+
+</body>
+</html>
